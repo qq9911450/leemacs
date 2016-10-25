@@ -15,6 +15,9 @@
 ;;     [Alt-o] : open a new line previous current line
 (require 'open-next-line)
 
+;;; ‘M-x delete-trailing-whitespace' before save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;;; Show line numbers
 (add-hook 'c-mode-common-hook (lambda () (linum-mode t)))
 (add-hook 'java-mode-hook (lambda () (linum-mode t)))
@@ -42,7 +45,10 @@
 ;;; let tab and trailing whitespace be visiable
 ;; (setq whitespace-style '(trailing tabs tab-mark newline-mark))
 ;;; show tab as tab-mark
-(setq whitespace-style '(trailing tabs tab-mark))
+;;(setq whitespace-style '(trailing tabs tab-mark))
+(setq whitespace-style
+      '(face trailing tabs tab-mark indentation::space))
+      (whitespace-mode 1)
 
 (add-hook 'c-mode-common-hook (lambda () (whitespace-mode)))
 (add-hook 'java-mode-hook (lambda () (whitespace-mode)))
