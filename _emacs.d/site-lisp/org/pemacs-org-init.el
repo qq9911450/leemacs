@@ -1,9 +1,9 @@
-;;; pemacs-org-init.el --- 
+;;; pemacs-org-init.el ---
 
 ;; Copyright (C) 2013  Adam Jiang
 
 ;; Author: Adam Jiang <jiang.adam@gmail.com>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 

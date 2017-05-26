@@ -55,6 +55,10 @@
 (add-hook 'python-mode-hook (lambda () (whitespace-mode)))
 (add-hook 'makefile-mode-hook (lambda () (whitespace-mode)))
 
+;;; Le Pan add for kernel coding
+(setq-default indent-tabs-mode nil)
+(add-hook 'c-mode-common-hook (lambda () (setq indent-tabs-mode t)))
+
 ;;; Auto-complete
 (require 'auto-complete)
 (setq ac-auto-start 3)
