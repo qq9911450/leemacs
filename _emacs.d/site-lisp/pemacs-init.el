@@ -19,12 +19,10 @@
 (require 'pemacs-completing)
 (require 'pemacs-vcs)
 (require 'pemacs-auxiliary)
-(require 'cuda-mode)
 
 ;; for each major mode
 (require 'pemacs-cc-edit)
 (require 'pemacs-org-init)
 (require 'pemacs-python-edit)
-
 
 (provide 'pemacs-init)

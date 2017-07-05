@@ -42,9 +42,22 @@
   (c-add-style "caplab" caplab-c-style))
 (add-hook 'c++-mode-hook 'caplab-set-style)
 
-;; treat .h file as c++ source code
-;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;; treat .cc .cpp file as c++ source code
+;;(add-to-list 'auto-mode-alist '("\\.cc\\'" . c++-mode))
+;;(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
 
+(require 'protobuf-mode)
+;; define le-protobuf-style
+(defconst le-protobuf-style
+  '((c-basic-offset . 2)
+       (indent-tabs-mode . nil)))
+(add-hook 'protobuf-mode-hook
+	  (lambda () (c-add-style "le-style" le-protobuf-style t)))
+
+;; treat .proto file as c-mode
+(add-to-list 'auto-mode-alist '("\\.proto\\'" . c-mode))
+
+(require 'cuda-mode)
 
 (provide 'pemacs-cc-edit)
 ;;; edit.el ends here
