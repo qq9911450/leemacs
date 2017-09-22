@@ -59,5 +59,41 @@
 
 (require 'cuda-mode)
 
+;;; +++ set linux kernel code style +++
+(defun c-lineup-arglist-tabs-only (ignored)
+  "Line up argument lists by tabs, not spaces"
+  (let* ((anchor (c-langelem-pos c-syntactic-element))
+         (column (c-langelem-2nd-pos c-syntactic-element))
+         (offset (- (1+ column) anchor))
+         (steps (floor offset c-basic-offset)))
+    (* (max steps 1)
+       c-basic-offset)))
+
+(add-hook 'c-mode-common-hook (lambda ()
+                                (c-add-style "linux-tabs-only"
+                                             '("linux" (c-offsets-alist
+                                                        (arglist-cont-nonempty
+                                                         c-lineup-gcc-asm-reg
+                                                         c-lineup-arglist-tabs-only))))))
+(add-hook 'c-mode-hook (lambda ()
+                         (let ((filename (buffer-file-name)))
+                           ;; Enable kernel mode for the appropriate files
+                           (when (and filename
+				      (or
+                                      (string-match (expand-file-name "/media/le/0e5449a6-84ca-4aea-b133-288481e5d912/sw/tx1-android/kernel/")
+                                                    filename)
+				      (string-match (expand-file-name "/media/le/0e5449a6-84ca-4aea-b133-288481e5d912/project/sw/tx1-android/kernel/")
+                                                    filename)
+				      (string-match (expand-file-name "/media/le/0e5449a6-84ca-4aea-b133-288481e5d912/sw/ninjia-android/kernel/")
+                                                    filename)
+				      (string-match (expand-file-name "/media/le/0e5449a6-84ca-4aea-b133-288481e5d912/sw/project/ninjia-android/kernel/")
+                                                    filename))
+				      )
+                             (setq indent-tabs-mode t)
+                             (setq show-trailing-whitespace t)
+                             (c-set-style "linux-tabs-only")))))
+;;; --- set linux kernel code style ---
+
+
 (provide 'pemacs-cc-edit)
 ;;; edit.el ends here
