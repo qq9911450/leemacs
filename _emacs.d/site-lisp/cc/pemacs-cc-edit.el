@@ -25,6 +25,7 @@
 ;;; Code:
 
 (require 'google-c-style)
+
 ;; set google-c-style as default when cc-mode is open
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
@@ -56,6 +57,8 @@
 
 ;; treat .proto file as c-mode
 (add-to-list 'auto-mode-alist '("\\.proto\\'" . c-mode))
+;; treat .proto file as c-mode
+(add-to-list 'auto-mode-alist '("\\.cmake\\'" . c-mode))
 
 (require 'cuda-mode)
 
