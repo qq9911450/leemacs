@@ -24,5 +24,7 @@
 (require 'pemacs-cc-edit)
 ;;;(require 'pemacs-org-init)
 (require 'pemacs-python-edit)
+;;; require 'cmake-mode
+(require 'cmake-mode)
 
 (provide 'pemacs-init)
