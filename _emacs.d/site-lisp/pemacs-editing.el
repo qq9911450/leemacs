@@ -22,7 +22,7 @@
 (add-hook 'c-mode-common-hook (lambda () (linum-mode t)))
 (add-hook 'java-mode-hook (lambda () (linum-mode t)))
 (add-hook 'python-mode-hook (lambda () (linum-mode t)))
-(add-hook 'makefile-mode-hook (lambda () (linum-mode t)))
+(add-hook 'cmake-mode-hook (lambda () (linum-mode t)))
 
 ;;; Show whitespaces on GUI
 (require 'whitespace)

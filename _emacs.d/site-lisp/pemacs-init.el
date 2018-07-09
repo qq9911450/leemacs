@@ -22,9 +22,9 @@
 
 ;; for each major mode
 (require 'pemacs-cc-edit)
-;;;(require 'pemacs-org-init)
 (require 'pemacs-python-edit)
-;;; require 'cmake-mode
+
 (require 'cmake-mode)
+(require 'markdown-mode)
 
 (provide 'pemacs-init)
