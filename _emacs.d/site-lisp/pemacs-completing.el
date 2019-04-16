@@ -47,6 +47,7 @@
 (setq auto-insert-directory (concat pemacs-install-dir "data/templates/"))
 (setq auto-insert-alist
       (append '(("\\.c$"   . ["template.c"   pemacs-template])
+		("\\.cc$" .  ["template.cc"  pemacs-template])
 		("\\.cpp$" . ["template.cpp" pemacs-template])
 		("\\.h$"   . ["template.h"   pemacs-template])
 		("\\.hpp$" . ["template.hpp" pemacs-template])
@@ -57,7 +58,7 @@
   '(("%file%"   . (lambda() (file-name-nondirectory (buffer-file-name))))
     ("%file-without-ext%" . (lambda() (file-name-sans-extension
 				       (file-name-nondirectory (buffer-file-name)))))
-    ("%include-guard%" . (lambda() (format "__%s_H__"
+    ("%include-guard%" . (lambda() (format "%s_H_"
 					   (upcase (file-name-sans-extension
 						    (file-name-nondirectory
 						     (buffer-file-name)))))))

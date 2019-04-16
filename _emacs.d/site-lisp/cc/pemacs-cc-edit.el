@@ -24,6 +24,7 @@
 
 ;;; Code:
 
+
 (require 'google-c-style)
 
 ;; set google-c-style as default when cc-mode is open
@@ -37,15 +38,19 @@
 ;; define caplab-c-style
 (defconst caplab-c-style
   '("Google"
-    (c-basic-offset . 4)
-    (c-offsets-alist . (((innamespace . 0))))))
+    (c-basic-offset . 2)
+    (c-offsets-alist . (((innamespace-open . 0)
+			 (innamespace-close . 0)
+			 (innamespace . 0))))))
+
 (defun caplab-set-style ()
   (c-add-style "caplab" caplab-c-style))
 (add-hook 'c++-mode-hook 'caplab-set-style)
 
 ;; treat .cc .cpp file as c++ source code
-;;(add-to-list 'auto-mode-alist '("\\.cc\\'" . c++-mode))
-;;(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cc\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
 
 (require 'protobuf-mode)
 ;; define le-protobuf-style
@@ -83,19 +88,17 @@
                            ;; Enable kernel mode for the appropriate files
                            (when (and filename
 				      (or
-                                      (string-match (expand-file-name "/media/le/0e5449a6-84ca-4aea-b133-288481e5d912/sw/tx1-android/kernel/")
+                                      (string-match (expand-file-name "~/project/tx2-kernel/")
                                                     filename)
-				      (string-match (expand-file-name "/media/le/0e5449a6-84ca-4aea-b133-288481e5d912/project/sw/tx1-android/kernel/")
-                                                    filename)
-				      (string-match (expand-file-name "/media/le/0e5449a6-84ca-4aea-b133-288481e5d912/sw/ninjia-android/kernel/")
-                                                    filename)
-				      (string-match (expand-file-name "/media/le/0e5449a6-84ca-4aea-b133-288481e5d912/sw/project/ninjia-android/kernel/")
+				      (string-match (expand-file-name "~/project/tx2-kernel/")
                                                     filename))
 				      )
                              (setq indent-tabs-mode t)
                              (setq show-trailing-whitespace t)
                              (c-set-style "linux-tabs-only")))))
 ;;; --- set linux kernel code style ---
+
+
 
 
 (provide 'pemacs-cc-edit)

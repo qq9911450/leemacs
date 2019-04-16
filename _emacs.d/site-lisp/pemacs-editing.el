@@ -55,24 +55,6 @@
 (add-hook 'python-mode-hook (lambda () (whitespace-mode)))
 (add-hook 'makefile-mode-hook (lambda () (whitespace-mode)))
 
-;;; Auto-complete
-(require 'auto-complete)
-(setq ac-auto-start 3)
-;; select candidates with c-n/c-p only when completion menu is displayed
-(setq ac-use-menu-map t)
-(define-key ac-menu-map "\C-n" 'ac-next)
-(define-key ac-menu-map "\C-p" 'ac-previous)
-(define-key ac-menu-map " "    'ac-complete)
-(define-key ac-menu-map "\r"   'ac-complete)
-(define-key ac-complete-mode-map "\t"   'ac-complete)
-(define-key ac-complete-mode-map "\r"   nil)
-(define-key ac-complete-mode-map "\M-/" 'ac-stop)
-;; set up dictionary for auto-complete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories
-	     (concat pemacs-install-dir "data/ac-dict"))
-(ac-config-default)
-
 ;;; Intend when RETURN
 (global-set-key (kbd "RET") 'newline-and-indent)
 
