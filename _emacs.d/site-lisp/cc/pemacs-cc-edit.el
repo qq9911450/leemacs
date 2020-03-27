@@ -41,65 +41,34 @@
     (c-basic-offset . 2)
     (c-offsets-alist . (((innamespace-open . 0)
 			 (innamespace-close . 0)
-			 (innamespace . 0))))))
+			 (innamespace . 0)
+			 (extern-lang-open . 0)
+			 (extern-lang-close . 0)
+			 (extern-lang . 0)
+			 )))))
 
 (defun caplab-set-style ()
   (c-add-style "caplab" caplab-c-style))
 (add-hook 'c++-mode-hook 'caplab-set-style)
 
-;; treat .cc .cpp file as c++ source code
+;; treat .h .hpp .cc .cpp file as c++ source code
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cc\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
 
 (require 'protobuf-mode)
-;; define le-protobuf-style
-(defconst le-protobuf-style
+(defconst my-protobuf-style
   '((c-basic-offset . 2)
-       (indent-tabs-mode . nil)))
+    (indent-tabs-mode . nil)))
 (add-hook 'protobuf-mode-hook
-	  (lambda () (c-add-style "le-style" le-protobuf-style t)))
-
-;; treat .proto file as c-mode
-(add-to-list 'auto-mode-alist '("\\.proto\\'" . c-mode))
-;; treat .proto file as c-mode
-(add-to-list 'auto-mode-alist '("\\.cmake\\'" . c-mode))
+	  (lambda () (c-add-style "my-style" my-protobuf-style t)))
 
 (require 'cuda-mode)
 
-;;; +++ set linux kernel code style +++
-(defun c-lineup-arglist-tabs-only (ignored)
-  "Line up argument lists by tabs, not spaces"
-  (let* ((anchor (c-langelem-pos c-syntactic-element))
-         (column (c-langelem-2nd-pos c-syntactic-element))
-         (offset (- (1+ column) anchor))
-         (steps (floor offset c-basic-offset)))
-    (* (max steps 1)
-       c-basic-offset)))
-
-(add-hook 'c-mode-common-hook (lambda ()
-                                (c-add-style "linux-tabs-only"
-                                             '("linux" (c-offsets-alist
-                                                        (arglist-cont-nonempty
-                                                         c-lineup-gcc-asm-reg
-                                                         c-lineup-arglist-tabs-only))))))
-(add-hook 'c-mode-hook (lambda ()
-                         (let ((filename (buffer-file-name)))
-                           ;; Enable kernel mode for the appropriate files
-                           (when (and filename
-				      (or
-                                      (string-match (expand-file-name "~/project/tx2-kernel/")
-                                                    filename)
-				      (string-match (expand-file-name "~/project/tx2-kernel/")
-                                                    filename))
-				      )
-                             (setq indent-tabs-mode t)
-                             (setq show-trailing-whitespace t)
-                             (c-set-style "linux-tabs-only")))))
-;;; --- set linux kernel code style ---
-
-
-
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
 (provide 'pemacs-cc-edit)
 ;;; edit.el ends here

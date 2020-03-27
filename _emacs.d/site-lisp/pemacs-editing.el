@@ -1,6 +1,9 @@
 ;;; VI-like stuff
 ;; moving between matching braces with %
 ;; just like vim could do
+
+(global-linum-mode 1)
+
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
   (interactive "p")

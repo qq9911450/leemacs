@@ -25,7 +25,6 @@
 (require 'pemacs-python-edit)
 
 (require 'cmake-mode)
-(require 'markdown-mode)
 
 (require 'pemacs-rtags)
 

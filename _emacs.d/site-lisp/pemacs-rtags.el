@@ -4,6 +4,7 @@
 
 (define-key c-mode-base-map (kbd "M-.") (function rtags-find-symbol-at-point))
 (define-key c-mode-base-map (kbd "M-,") (function rtags-find-references-at-point))
+(define-key c-mode-base-map (kbd "M-?") (function rtags-display-summary))
 (define-key c-mode-base-map (kbd "M-;") (function rtags-find-file))
 
 (define-key c-mode-base-map (kbd "M-[") (function rtags-location-stack-back))
@@ -33,6 +34,5 @@
 
 (require 'helm-rtags)
 (setq rtags-display-result-backend 'helm)
-
 
 (provide 'pemacs-rtags)
