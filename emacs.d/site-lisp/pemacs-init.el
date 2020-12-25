@@ -23,7 +23,6 @@
 ;; for each major mode
 (require 'pemacs-cc-edit)
 (require 'pemacs-python-edit)
-(require 'pemacs-groovy-edit)
 (require 'pemacs-jenkinsfile-mode)
 
 (require 'cmake-mode)
@@ -31,6 +30,7 @@
 (require 'pemacs-rtags)
 
 (provide 'pemacs-init)
+
 
 (require 'package)
 (add-to-list 'package-archives
