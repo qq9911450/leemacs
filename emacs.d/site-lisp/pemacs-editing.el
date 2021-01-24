@@ -57,6 +57,7 @@
 (add-hook 'java-mode-hook (lambda () (whitespace-mode)))
 (add-hook 'python-mode-hook (lambda () (whitespace-mode)))
 (add-hook 'makefile-mode-hook (lambda () (whitespace-mode)))
+(add-hook 'pemacs-jenkinsfile-mode-hook (lambda () (whitespace-mode)))
 
 ;;; Intend when RETURN
 (global-set-key (kbd "RET") 'newline-and-indent)

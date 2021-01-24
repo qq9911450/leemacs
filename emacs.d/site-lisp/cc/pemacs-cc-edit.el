@@ -70,5 +70,10 @@
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
+(require 'clang-format)
+(add-hook 'c-mode-common-hook '(lambda () (global-set-key (kbd "C-c i") 'clang-format-region)))
+(add-hook 'c-mode-common-hook '(lambda () (global-set-key (kbd "C-c u") 'clang-format-buffer)))
+(setq clang-format-style-option "google")
+
 (provide 'pemacs-cc-edit)
 ;;; edit.el ends here

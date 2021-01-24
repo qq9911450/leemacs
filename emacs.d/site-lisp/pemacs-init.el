@@ -25,6 +25,9 @@
 (require 'pemacs-python-edit)
 (require 'pemacs-jenkinsfile-mode)
 
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+
 (require 'cmake-mode)
 
 (require 'pemacs-rtags)
